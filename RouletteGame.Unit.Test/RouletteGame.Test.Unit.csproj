@@ -43,8 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="betUnitTest.cs" />
+    <Compile Include="FieldUnitTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RouletteGameUnitTest.cs" />
+    <Compile Include="RouletteUnitTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RouletteGame.Legacy\RouletteGame.Legacy.csproj">
