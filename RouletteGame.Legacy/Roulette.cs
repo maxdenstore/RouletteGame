@@ -5,21 +5,23 @@ namespace RouletteGame.Legacy
 {
     public class Roulette
     {
-        private readonly IRandomizer random = new Randomzier();
-        private readonly IFieldFactory fieldFactory = new FieldFactory();
+        private readonly IRandomizer _random;
+        private readonly IFieldFactory _fieldFactory;
         private readonly List<Field> _fields;
         private Field _result;
 
-        public Roulette()
+        public Roulette(IRandomizer randompar, IFieldFactory FieldFactorypar)
         {
-            _fields = fieldFactory.getFields();
+            _random = randompar;
+            _fieldFactory = FieldFactorypar;
 
+            _fields = _fieldFactory.getFields();
             _result = _fields[0];
         }
 
         public void Spin()
         {
-            var n = random.next();
+            var n = _random.next();
             _result = _fields[(int) n];
         }
 
