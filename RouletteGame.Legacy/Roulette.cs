@@ -65,4 +65,14 @@ namespace RouletteGame.Legacy
             return _result;
         }
     }
+
+    public interface IRandomizer // make for game and test
+    {
+        void next();
+    }
+
+    public interface IFieldFactory //make factories for games and tests
+    {
+        List<Field> getFields();
+    }
 }
