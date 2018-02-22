@@ -11,7 +11,7 @@ namespace RouletteGame.Legacy
     {
         static void Main(string[] args)
         {
-            var game = new RouletteGame(new Roulette());
+            var game = new RouletteGame(new Roulette(new Randomzier(), new FieldFactory()));
             game.OpenBets();
             game.PlaceBet(new ColorBet("Player 1", 100, Field.Black));
             game.PlaceBet(new ColorBet("Player 1", 100, Field.Red));

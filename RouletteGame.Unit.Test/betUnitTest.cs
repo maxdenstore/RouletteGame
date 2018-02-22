@@ -7,8 +7,8 @@ using NUnit.Framework;
 
 namespace RouletteGame.Unit.Test
 {
-    [TestFixture]
-    public class betUnitTest
+    class betTest
     {
+
     }
 }

@@ -44,9 +44,31 @@ namespace RouletteGame.Legacy
         }
     }
 
+    public class FakeRandomizerReturn0 : IRandomizer
+    {
+        public uint next()
+        {
+            return 0;
+        }
+    }
+
     public interface IFieldFactory //make factories for games and tests
     {
         List<Field> getFields();
+    }
+
+    public class FakeFieldFactoryGRB : IFieldFactory
+    {
+        public List<Field> getFields()
+        {
+            var _fields = new List<Field>
+            {
+                new Field(0, Field.Green),
+                new Field(1, Field.Red),
+                new Field(2, Field.Black)
+            };
+            return _fields;
+        }
     }
 
     public class FieldFactory : IFieldFactory //the standard amount of fields
