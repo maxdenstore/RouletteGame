@@ -1,8 +1,15 @@
-﻿namespace RouletteGame.Legacy
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using RouletteGame.Legacy;
+
+namespace RouletteGame.Legacy
 {
-    public class RouletteGameTestApplication
+    class Program
     {
-        private static void Main()
+        static void Main(string[] args)
         {
             var game = new RouletteGame(new Roulette());
             game.OpenBets();
@@ -18,6 +25,7 @@
             game.CloseBets();
             game.SpinRoulette();
             game.PayUp();
+
         }
     }
 }
