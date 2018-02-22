@@ -5,12 +5,53 @@ namespace RouletteGame.Legacy
 {
     public class Roulette
     {
+        private readonly IRandomizer random = new Randomzier();
+        private readonly IFieldFactory fieldFactory = new FieldFactory();
         private readonly List<Field> _fields;
         private Field _result;
 
         public Roulette()
         {
-            _fields = new List<Field>
+            _fields = fieldFactory.getFields();
+
+            _result = _fields[0];
+        }
+
+        public void Spin()
+        {
+            var n = random.next();
+            _result = _fields[(int) n];
+        }
+
+        public Field GetResult()
+        {
+            return _result;
+        }
+    }
+
+    public interface IRandomizer // make for game and test
+    {
+        uint next();
+    }
+
+    public class Randomzier : IRandomizer
+    {
+        public uint next()
+        {
+            return (uint)new Random().Next(0, 37);
+        }
+    }
+
+    public interface IFieldFactory //make factories for games and tests
+    {
+        List<Field> getFields();
+    }
+
+    public class FieldFactory : IFieldFactory //the standard amount of fields
+    {
+        public List<Field> getFields()
+        {
+            var _fields = new List<Field>
             {
                 new Field(0, Field.Green),
                 new Field(1, Field.Red),
@@ -51,28 +92,7 @@ namespace RouletteGame.Legacy
                 new Field(36, Field.Red)
             };
 
-            _result = _fields[0];
+            return _fields;
         }
-
-        public void Spin()
-        {
-            var n = (uint) new Random().Next(0, 37);
-            _result = _fields[(int) n];
-        }
-
-        public Field GetResult()
-        {
-            return _result;
-        }
-    }
-
-    public interface IRandomizer // make for game and test
-    {
-        void next();
-    }
-
-    public interface IFieldFactory //make factories for games and tests
-    {
-        List<Field> getFields();
     }
 }
